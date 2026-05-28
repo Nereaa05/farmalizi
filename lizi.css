@@ -1,0 +1,849 @@
+/* ================================================
+   FARMALIZI — lizi.css
+   ================================================ */
+
+:root {
+  --verde:        #2e7d32;      /* verde principal */
+  --verde-claro:  #4caf50;      /* verde más brillante */
+  --verde-light:  #e8f5e9;      /* verde muy suave para fondos */
+  --verde-dark:   #1b5e20;      /* verde oscuro para títulos */
+  --blanco:       #ffffff;
+  --gris-bg:      #f4f6f8;      /* fondo gris claro de la página */
+  --gris-card:    #ffffff;      /* fondo blanco de las tarjetas */
+  --texto:        #1a1a2e;      /* color del texto principal */
+  --texto-suave:  #5a6a5c;      /* color del texto secundario */
+  --sombra:       0 4px 16px rgba(19, 40, 19, 0.12);  /* sombra verdosa suave */
+  --radio:        14px;         /* redondez de las esquinas */
+  --wapp:         #25D366;      /* verde oficial de WhatsApp */
+}
+
+/* ------------------------------------------------
+   RESET BÁSICO
+   Quita el margen y padding que traen por defecto
+   todos los elementos del navegador.
+   ------------------------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------------------
+   BODY — base de toda la página
+   ------------------------------------------------ */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--gris-bg);
+  color: var(--texto);
+  scroll-behavior: smooth; /* hace que los links # bajen suavemente */
+}
+
+
+/* ================================================
+   NAVBAR
+   ================================================ */
+.navbar {
+  background: var(--blanco);
+  box-shadow: 0 2px 12px rgba(0,0,0,.08); /* sombra suave abajo */
+  padding: .7rem 1rem;
+  z-index: 1000; /* se queda siempre encima de todo */
+}
+
+/* Cuadradito verde con el ícono de cápsula */
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--verde);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+/* Nombre "FarmaLizi" en negrita */
+.brand-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--texto);
+  letter-spacing: -.5px;
+}
+
+/* La parte "Lizi" en verde claro */
+.brand-accent {
+  color: var(--verde);
+}
+
+/* Links del menú */
+.nav-link {
+  color: var(--texto) !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: .4rem .85rem !important;
+  transition: all .2s; /* animación suave al pasar el mouse */
+}
+.nav-link:hover,
+.nav-link.active {
+  background: var(--verde-light);
+  color: var(--verde-dark) !important;
+}
+
+/* Caja del buscador */
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search-wrap input {
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  padding: .4rem 1rem .4rem 2.2rem; /* espacio a la izquierda para el ícono */
+  font-family: 'Nunito', sans-serif;
+  font-size: .9rem;
+  width: 200px;
+  outline: none;
+  transition: border .2s;
+}
+.search-wrap input:focus {
+  border-color: var(--verde-claro); /* borde verde al hacer clic */
+}
+/* Lupa dentro del buscador */
+.search-icon {
+  position: absolute;
+  left: .7rem;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+/* ================================================
+   HERO — sección de bienvenida
+   ================================================ */
+.hero-section {
+  background: linear-gradient(135deg, var(--verde-dark) 0%, var(--verde) 60%, var(--verde-claro) 100%);
+  color: #fff;
+  padding: 2rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  overflow: hidden; /* oculta los círculos decorativos que se salen */
+}
+
+/* Pastilla "Entrega a domicilio" */
+.hero-badge {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 30px;
+  padding: .3rem .9rem;
+  font-size: .85rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Título grande del hero */
+.hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem); /* se achica en mobile automáticamente */
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: .8rem;
+}
+
+/* "de confianza" en verde menta */
+.hero-highlight {
+  color: #b9f6ca;
+  display: block;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  opacity: .88;
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+}
+
+/* Botón blanco "Ver catálogo" */
+.btn-hero {
+  background: #fff;
+  color: var(--verde-dark);
+  border-radius: 30px;
+  padding: .7rem 1.8rem;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+}
+.btn-hero:hover {
+  transform: translateY(-2px); /* sube levemente al hover */
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  color: var(--verde-dark);
+}
+
+/* Decoración circular a la derecha */
+.hero-deco {
+  position: relative;
+  min-width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+}
+.c1 { width: 180px; height: 180px; opacity: .18; }
+.c2 { width: 120px; height: 120px; opacity: .10; }
+
+/* Ícono de cápsula que flota */
+.hero-icon {
+  font-size: 5rem;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite; /* animación de flotación */
+}
+
+/* La animación float: sube y baja suavemente */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+
+/* ================================================
+   SECCIÓN CATÁLOGO
+   ================================================ */
+.catalogo-section {
+  padding: 3rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto; /* centrado horizontal */
+}
+
+/* Encabezado de sección (título + subtítulo) */
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.section-header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: .3rem;
+}
+.section-header p {
+  color: var(--texto-suave);
+  font-size: 1rem;
+}
+
+/* La palabra "Catálogo" en verde */
+.text-verde {
+  color: var(--verde);
+}
+
+
+/* ------------------------------------------------
+   BOTONES DE FILTRO (Todos / Blister / Jarabes...)
+   ------------------------------------------------ */
+.seccion-categoria {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* centra el título */
+  gap: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2c2c2c;             /* casi negro, neutro y sobrio */
+  margin: 48px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #4a9e5d;
+}
+
+/* Sacás el puntito */
+.seccion-categoria::before {
+  display: none;
+}
+
+.cat-icon {
+  font-size: 1.2rem;
+}
+.filtros-wrap {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap; /* si no entran en una fila, bajan */
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.filtro-btn {
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  padding: .4rem 1.1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: all .2s;
+  color: var(--texto);
+}
+.filtro-btn:hover {
+  border-color: var(--verde-claro);
+  color: var(--verde);
+}
+/* El botón activo (seleccionado) se pone verde sólido */
+.filtro-btn.active {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+
+
+/* ------------------------------------------------
+   GRILLA DE PRODUCTOS
+   auto-fill: crea tantas columnas como entren,
+   con un mínimo de 190px cada una.
+   ------------------------------------------------ */
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 3rem;
+  padding: 1.5rem;
+  cursor: pointer;
+}
+
+
+/* ------------------------------------------------
+   TARJETA DE PRODUCTO (.prod-card)
+   ------------------------------------------------ */
+.prod-card {
+  background: var(--gris-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden; /* las esquinas redondeadas cortan la imagen */
+  transition: transform .2s, box-shadow .2s;
+  display: flex;
+  flex-direction: column; /* imagen arriba, info abajo */
+}
+/* Al pasar el mouse, la tarjeta "sube" */
+.prod-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(46,125,50,.18);
+}
+
+/* Contenedor de la imagen */
+.prod-img-wrap {
+  position: relative;
+  background: #f0f4f0;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.prod-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* la imagen llena el espacio sin deformarse */
+  transition: transform .3s;
+}
+/* Al hacer hover en la tarjeta, la imagen hace zoom */
+.prod-card:hover .prod-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Etiqueta de categoría (ej: "Blister") */
+.prod-badge {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  background: var(--verde);
+  color: #fff;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: .2rem .6rem;
+}
+/* Colores distintos según la categoría */
+.badge-jarabe { background: #0288d1; 
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  color: #fff;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: .2rem .6rem;}  /* azul para jarabes */
+  .badge-crema { background: #7dc3a6; 
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  color: #fff;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: .2rem .6rem;}  /* verde para cremas */
+.badge-sobre  { background: #f57c00; 
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  color: #fff;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: .2rem .6rem;}  /* naranja para sobres */
+.badge-otro   { background: #83459d; 
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  color: #fff;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: .2rem .6rem;}  /* violeta para otros */
+
+/* Parte inferior de la tarjeta (nombre, precio, botones) */
+.prod-info {
+  padding: .85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1; /* ocupa todo el espacio restante */
+  gap: .2rem;
+}
+.prod-info h5 {
+  font-weight: 800;
+  font-size: .95rem;
+  line-height: 1.3;
+  color: var(--texto);
+}
+.prod-info small {
+  color: var(--texto-suave);
+  font-size: .8rem;
+}
+/* Precio en verde oscuro y grande */
+.prod-precio {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--verde-dark);
+  margin: .3rem 0 .5rem;
+}
+
+
+/* ------------------------------------------------
+   CONTROLES DE CANTIDAD (− 0 +)
+   ------------------------------------------------ */
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-content: center;
+  margin-top: auto; /* empuja los botones al fondo de la tarjeta */
+}
+
+.cantidad-control button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .1s, background .2s;
+}
+/* Botón menos: rojo suave */
+.btn-menos { background: #ffebee; color: #c62828; }
+/* Botón más: verde suave */
+.btn-mas   { background: var(--verde-light); color: var(--verde-dark); }
+
+.btn-menos:hover { background: #ffcdd2; transform: scale(1.1); }
+.btn-mas:hover   { background: #c8e6c9; transform: scale(1.1); }
+
+/* Número de cantidad */
+.cantidad-control span {
+  font-size: 1rem;
+  font-weight: 800;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* Mensaje "No se encontraron productos" */
+.sin-resultados {
+  text-align: center;
+  padding: 3rem;
+  color: var(--texto-suave);
+}
+.sin-resultados i {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+
+/* ================================================
+   PANEL CARRITO (lateral derecho)
+   ================================================ */
+
+/* Fondo oscuro que aparece detrás del panel */
+.carrito-overlay {
+  display: none;
+  position: fixed;   /* cubre toda la pantalla */
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 1998;
+  backdrop-filter: blur(2px); /* desenfoca el fondo */
+}
+.carrito-overlay.open {
+  display: block; /* se muestra cuando tiene la clase .open */
+}
+
+/* Panel lateral */
+.carrito-panel {
+  position: fixed;
+  top: 0;
+  right: -420px; /* empieza fuera de la pantalla a la derecha */
+  width: min(420px, 100vw); /* en mobile ocupa todo el ancho */
+  height: 100vh;
+  background: #fff;
+  z-index: 1999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0,0,0,.15);
+  transition: right .3s ease; /* animación de deslizamiento */
+}
+/* Cuando tiene .open, entra desde la derecha */
+.carrito-panel.open {
+  right: 0;
+}
+
+/* Cabecera del panel (verde oscuro) */
+.carrito-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  background: var(--verde);
+  color: #fff;
+}
+.carrito-header h4 {
+  font-weight: 800;
+  margin: 0;
+  font-size: 1.1rem;
+}
+/* Botón X para cerrar */
+.carrito-close {
+  background: rgba(255,255,255,.2);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+.carrito-close:hover {
+  background: rgba(255,255,255,.35);
+}
+
+/* Zona scrolleable donde van los productos */
+.carrito-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+}
+
+/* Estado vacío */
+.carrito-vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--texto-suave);
+  gap: .5rem;
+  padding: 2rem;
+  text-align: center;
+}
+.carrito-vacio i    { font-size: 3.5rem; color: #ccc; }
+.carrito-vacio p    { font-weight: 700; font-size: 1rem; }
+.carrito-vacio small { font-size: .85rem; }
+
+/* Fila de un producto en el carrito */
+.carrito-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .8rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.carrito-item-nombre { font-weight: 700; font-size: .9rem; flex: 1; }
+.carrito-item-cant   { font-weight: 800; color: var(--verde); font-size: .9rem; white-space: nowrap; }
+.carrito-item-precio { font-weight: 800; font-size: .9rem; color: var(--verde-dark); white-space: nowrap; }
+
+/* Pie del panel (total + botón WhatsApp) */
+.carrito-footer {
+  border-top: 2px solid var(--verde-light);
+  padding: 1.2rem 1.5rem;
+  background: #fafafa;
+}
+
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.carrito-total strong {
+  font-size: 1.4rem;
+  color: var(--verde-dark);
+}
+
+/* Botón verde de WhatsApp */
+.btn-whatsapp {
+  width: 100%;
+  background: var(--wapp);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: .9rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  transition: background .2s, transform .15s, opacity .2s;
+}
+.btn-whatsapp:hover:not(:disabled) {
+  background: #1ebe57;
+  transform: scale(1.02);
+}
+/* Cuando no hay productos, el botón aparece apagado */
+.btn-whatsapp:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.bi bi-whatsapp {
+  font-size: 1.2rem;
+  color: #fff;
+cursor: pointer;
+}
+/* ================================================
+   SECCIÓN NOSOTROS
+   ================================================ */
+.nosotros-section {
+  background: var(--verde-dark);
+  color: #fff;
+  padding: 4rem 2rem;
+}
+.nosotros-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.nosotros-text { flex: 1; }
+
+/* Pastilla "Sobre nosotros" */
+.section-tag {
+  background: rgba(255,255,255,.15);
+  border-radius: 30px;
+  padding: .3rem .9rem;
+  font-size: .82rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: .8rem;
+}
+.nosotros-text h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 800;
+  margin-bottom: .8rem;
+}
+.nosotros-text p {
+  opacity: .9;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* Lista de puntos con tilde verde */
+.nosotros-puntos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.nosotros-puntos li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 600;
+}
+.nosotros-puntos i { color: #b9f6ca; font-size: 1.1rem; }
+
+/* Ícono grande de corazón */
+.nosotros-icono {
+  font-size: 7rem;
+  color: rgba(255,255,255,.15);
+  min-width: 120px;
+  text-align: center;
+  animation: float 4s ease-in-out infinite;
+}
+
+
+/* ================================================
+   SECCIÓN CONTACTO
+   ================================================ */
+.contacto-section {
+  padding: 3.5rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Tarjetas de contacto en fila */
+.contacto-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+.contacto-card {
+  background: #fff;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+}
+.contacto-card i  { font-size: 2rem; color: var(--verde); display: block; margin-bottom: .6rem; }
+.contacto-card h5 { font-weight: 800; margin-bottom: .4rem; }
+.contacto-card a  { color: var(--verde-dark); font-weight: 700; text-decoration: none; }
+.contacto-card a:hover { text-decoration: underline; }
+.contacto-card p  { color: var(--texto-suave); font-size: .9rem; margin: 0; }
+
+
+/* ================================================
+   FOOTER
+   ================================================ */
+footer {
+  background: var(--texto); /* fondo oscuro */
+  color: rgba(255,255,255,.7);
+  padding: 1.5rem;
+  text-align: center;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+.footer-brand       { color: #fff; font-size: 1.1rem; }
+.footer-brand i     { color: var(--verde-claro); }
+footer a            { color: var(--verde-claro); text-decoration: none; }
+footer a:hover      { text-decoration: underline; }
+
+.resumen-header {
+  background: var(--verde);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radio) var(--radio) 0 0;
+}
+.resumen-header h4 { margin: 0; font-weight: 800; }
+
+#resumen-filas {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e0e0e0;
+}
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: .6rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: .95rem;
+}
+.resumen-nombre { flex: 1; font-weight: 600; }
+.resumen-cant   { color: var(--verde); font-weight: 700; margin: 0 1rem; }
+.resumen-precio { font-weight: 800; color: var(--verde-dark); }
+
+.resumen-total-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 1rem 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.resumen-total-wrap strong { font-size: 1.4rem; color: var(--verde-dark); }
+
+.btn-whatsapp-resumen {
+  width: 100%;
+  background: var(--wapp);
+  color: #fff;
+  border: none;
+  border-radius: 0 0 var(--radio) var(--radio);
+  padding: 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  transition: background .2s;
+}
+.btn-whatsapp-resumen:hover { background: #1ebe57; }
+/* ================================================
+   RESPONSIVE — adaptación a pantallas chicas
+   ================================================ */
+
+@media (max-width: 992px) {
+  .hero-deco    { display: none; } /* oculta la decoración del hero */
+  .nosotros-icono { display: none; } /* oculta el ícono de nosotros */
+}
+
+@media (max-width: 1100px) {
+  .catalogo-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .catalogo-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogo-grid {
+    grid-template-columns: 1fr; /* 1 columna en móviles muy chicos */
+  }
+}
