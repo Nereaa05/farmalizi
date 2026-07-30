@@ -8,7 +8,9 @@
 // Si el número cambia, solo lo modificás acá
 // y se actualiza en toda la app automáticamente.
 // ------------------------------------------------
-const WHATSAPP_NUMBER = '5493364580967';
+let WHATSAPP_NUMBER = '5493364580967';
+// Más abajo, si querés cambiar el número, lo asignás SIN poner const/let:
+WHATSAPP_NUMBER = '5493364580967'; // Ejemplo: '5493364580967' (sin espacios ni guiones)
 
 
 // ================================================
@@ -171,20 +173,98 @@ document.querySelectorAll('.filtro-btn').forEach(btn => {
 
 
 // ================================================
-// 6. BUSCADOR EN TIEMPO REAL
+// 6. BUSCADOR EN TIEMPO REAL CON DROPDOWN Y CRUZ
 // ================================================
-// Cada vez que el usuario escribe algo en el buscador
-// llama a filtrarProductos() para actualizar la grilla.
-// ------------------------------------------------
-document.getElementById('buscador').addEventListener('input', filtrarProductos);
 
+const inputBuscador = document.getElementById('buscador');
+const clearBtn = document.getElementById('clear-btn');
+const searchResults = document.getElementById('search-results');
 
+// Evento principal al escribir
+inputBuscador.addEventListener('input', () => {
+  const query = inputBuscador.value.toLowerCase().trim();
+
+  // 1. Filtrar la grilla principal (tu función existente)
+  filtrarProductos();
+
+  // 2. Control del botón de cierre (Cruz)
+  if (query.length > 0) {
+    clearBtn.classList.remove('hidden');
+  } else {
+    clearBtn.classList.add('hidden');
+    searchResults.classList.add('hidden');
+    return;
+  }
+
+  // 3. Generar la lista flotante usando las cards que ya están en el DOM
+  actualizarDropdown(query);
+});
+
+// Función para armar los resultados desplegables con miniatura
+function actualizarDropdown(texto) {
+  searchResults.innerHTML = '';
+  
+  // Obtenemos la categoría seleccionada actualmente
+  const botonActivo = document.querySelector('.filtro-btn.active');
+  const catActiva = botonActivo ? botonActivo.dataset.cat.toLowerCase().trim() : 'todos';
+
+  const cards = document.querySelectorAll('.prod-card');
+  let coincidencias = 0;
+
+  cards.forEach(card => {
+    const catCard = (card.dataset.cat || '').toLowerCase().trim();
+    const nombre = card.dataset.nombre || '';
+    const matchCat = catActiva === 'todos' || catCard === catActiva;
+    const matchText = nombre.toLowerCase().includes(texto);
+
+    // Solo mostramos en el dropdown si coincide con la categoría activa y el texto
+    if (matchCat && matchText) {
+      coincidencias++;
+
+      // Extraemos la imagen directamente de la tarjeta HTML
+      const imgElem = card.querySelector('img');
+      const imgSrc = imgElem ? imgElem.src : '';
+
+      // Creamos el ítem del desplegable
+      const item = document.createElement('a');
+      item.classList.add('result-item');
+      
+      // Si tus cards tienen un ID o enlace, podés asignarlo acá
+      item.href = card.id ? `#${card.id}` : '#';
+
+      item.innerHTML = `
+        <img src="${imgSrc}" alt="${nombre}" class="result-thumb" />
+        <span class="result-title">${nombre}</span>
+      `;
+
+      // Al hacer clic en un ítem del desplegable, hace scroll suave hasta la tarjeta
+      item.addEventListener('click', (e) => {
+        searchResults.classList.add('hidden');
+        if (card.id) {
+          e.preventDefault();
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+
+      searchResults.appendChild(item);
+    }
+  });
+
+  // Mensaje en el desplegable si no hay coincidencias
+  if (coincidencias === 0) {
+    searchResults.innerHTML = `<div class="no-results">No se encontraron medicamentos</div>`;
+  }
+
+  searchResults.classList.remove('hidden');
+}
+
+// Tu función original para filtrar la grilla principal de la página
 function filtrarProductos() {
   const botonActivo = document.querySelector('.filtro-btn.active');
   if (!botonActivo) return;
 
   const cat = botonActivo.dataset.cat.toLowerCase().trim();
-  const texto = document.getElementById('buscador').value.toLowerCase().trim();
+  const texto = inputBuscador.value.toLowerCase().trim();
   const cards = document.querySelectorAll('.prod-card');
   const titulos = document.querySelectorAll('.seccion-categoria');
   let visibles = 0;
@@ -215,3 +295,56 @@ function filtrarProductos() {
     sinResultados.style.display = visibles === 0 ? 'block' : 'none';
   }
 }
+
+// Limpiar búsqueda al hacer clic en la 'X'
+clearBtn.addEventListener('click', () => {
+  inputBuscador.value = '';
+  clearBtn.classList.add('hidden');
+  searchResults.classList.add('hidden');
+  filtrarProductos(); // Restablece la grilla de productos
+  inputBuscador.focus();
+});
+
+// Cerrar lista flotante al hacer clic fuera
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.search-wrap')) {
+    searchResults.classList.add('hidden');
+  }
+});
+
+// ================================================
+// 7. BOTÓN VOLVER ARRIBA (Back to Top)
+// ================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const backToTopBtn = document.getElementById('backToTop');
+
+  if (backToTopBtn) {
+    // 1. Detección de scroll
+    const detectarScroll = () => {
+      const scroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+      
+      if (scroll > 100) {
+        backToTopBtn.style.setProperty('display', 'flex', 'important');
+      } else {
+        backToTopBtn.style.setProperty('display', 'none', 'important');
+      }
+    };
+
+    window.addEventListener('scroll', detectarScroll);
+    document.addEventListener('scroll', detectarScroll, true);
+
+    // 2. Clic para volver arriba
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Fallbacks por si la landing usa scroll en un contenedor
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
+  }
+});

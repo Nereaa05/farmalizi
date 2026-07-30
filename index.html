@@ -12,7 +12,7 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav id = "inicio" class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid px-3">
       <a class="navbar-brand d-flex align-items-center gap-2" href="#">
         <div class="logo-icon"><i class="bi bi-capsule"></i></div>
@@ -27,10 +27,16 @@
           <li class="nav-item"><a class="nav-link" href="#nosotros"><i class="bi bi-info-circle me-1"></i>Nosotros</a></li>
           <li class="nav-item"><a class="nav-link" href="#contacto"><i class="bi bi-telephone me-1"></i>Contacto</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-3 mt-2 mt-lg-0">
-          <div class="search-wrap">
-            <i class="bi bi-search search-icon"></i>
-            <input type="text" id="buscador" placeholder="Buscar medicamento..." />
+       <div class="d-flex align-items-center gap-3 mt-2 mt-lg-0">
+  <div class="search-wrap">
+    <i class="bi bi-search search-icon"></i>
+    <input type="text" id="buscador" placeholder="Buscar medicamento..." autocomplete="off" />
+    
+    <!-- Botón para limpiar (cruz) -->
+    <button type="button" id="clear-btn" class="clear-btn hidden" aria-label="Limpiar búsqueda">&times;</button>
+    
+    <!-- Desplegable de resultados -->
+    <div id="search-results" class="results-dropdown hidden"></div>
           </div>
         </div>
       </div>
@@ -76,24 +82,24 @@
           <!-- ── TÍTULO BLISTER (dentro de la grilla, ocupa toda la fila) -->
     <h2 id="blister" class="seccion-categoria" style="scroll-margin-top:50px;">💊 Blister</h2>
      <div class="catalogo-grid">
-      <div class="prod-card" data-cat="blister" data-nombre="Actron 600" data-precio="7900">
+      <div class="prod-card" data-cat="blister" data-nombre="Actron 600" data-precio="8500">
         <div class="prod-img-wrap"><img src="./stilos/actron600.jpg" alt="Actron 600"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Actron 600</h5><small>10 unidades</small><p class="prod-precio">$7.900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Actron 600</h5><small>10 unidades</small><p class="prod-precio">$8.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Actron 400" data-precio="3200">
+      <div class="prod-card" data-cat="blister" data-nombre="Actron 400" data-precio="3600">
         <div class="prod-img-wrap"><img src="./stilos/actron400.png" alt="Actron 400"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Actron 400</h5><small>10 unidades</small><p class="prod-precio">$3.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Actron 400</h5><small>10 unidades</small><p class="prod-precio">$3.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Actron Mujer" data-precio="3600">
+      <div class="prod-card" data-cat="blister" data-nombre="Actron Mujer" data-precio="3900">
         <div class="prod-img-wrap"><img src="./stilos/actronmujer.jpg" alt="Actron Mujer"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Actron Mujer</h5><small>10 unidades</small><p class="prod-precio">$3.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Actron Mujer</h5><small>10 unidades</small><p class="prod-precio">$3.900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Actron Migra" data-precio="4800">
+      <div class="prod-card" data-cat="blister" data-nombre="Actron Migra" data-precio="4600">
         <div class="prod-img-wrap"><img src="./stilos/actronmigra.webp" alt="Actron Migra"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Actron Migra</h5><small>10 unidades</small><p class="prod-precio">$4.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Actron Migra</h5><small>10 unidades</small><p class="prod-precio">$4.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Actron Plus" data-precio="4200">
@@ -116,9 +122,9 @@
         <div class="prod-info"><h5>Ibuprofeno 400</h5><p class="prod-precio">$800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Anaflex Plus" data-precio="3600">
+      <div class="prod-card" data-cat="blister" data-nombre="Anaflex Plus" data-precio="4200">
         <div class="prod-img-wrap"><img src="./stilos/anaflexplus.webp" alt="Anaflex Plus"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Anaflex Plus</h5><small>10 unidades</small><p class="prod-precio">$3.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Anaflex Plus</h5><small>10 unidades</small><p class="prod-precio">$4.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Paracetamol 500" data-precio="800">
@@ -126,14 +132,14 @@
         <div class="prod-info"><h5>Paracetamol 500</h5><p class="prod-precio">$800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol MAX" data-precio="3600">
+      <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol MAX" data-precio="3800">
         <div class="prod-img-wrap"><img src="./stilos/ibuevanol_capsblandas.jpg" alt="Ibuevanol MAX"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Ibuevanol MAX</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$3.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Ibuevanol MAX</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$3.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol RA" data-precio="2300">
+      <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol RA" data-precio="2400">
         <div class="prod-img-wrap"><img src="./stilos/ibuevanolra.png" alt="Ibuevanol RA"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Ibuevanol RA</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$2.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Ibuevanol RA</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$2.400</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol Forte" data-precio="3000">
@@ -141,24 +147,24 @@
         <div class="prod-info"><h5>Ibuevanol Forte</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$3.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol Plus" data-precio="2500">
+      <div class="prod-card" data-cat="blister" data-nombre="Ibuevanol Plus" data-precio="2600">
         <div class="prod-img-wrap"><img src="./stilos/ibuevanolplus.png" alt="Ibuevanol Plus"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Ibuevanol Plus</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$2.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Ibuevanol Plus</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$2.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Aspirineta" data-precio="1100">
+      <div class="prod-card" data-cat="blister" data-nombre="Aspirineta" data-precio="1000">
         <div class="prod-img-wrap"><img src="./stilos/aspirinetas14.jpg" alt="Aspirineta"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Aspirineta</h5><small>14 unidades</small><p class="prod-precio">$1.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Aspirineta</h5><small>14 unidades</small><p class="prod-precio">$1.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Bayaspirina" data-precio="2000">
+      <div class="prod-card" data-cat="blister" data-nombre="Bayaspirina" data-precio="2200">
         <div class="prod-img-wrap"><img src="./stilos/bayaspirina.jpg" alt="Bayaspirina"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Bayaspirina</h5><small>10 unidades</small><p class="prod-precio">$2.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Bayaspirina</h5><small>10 unidades</small><p class="prod-precio">$2.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Cafiaspirina" data-precio="2300">
+      <div class="prod-card" data-cat="blister" data-nombre="Cafiaspirina" data-precio="2500">
         <div class="prod-img-wrap"><img src="./stilos/cafiaspirinaTira10comp.png" alt="Cafiaspirina"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Cafiaspirina</h5><small>10 unidades</small><p class="prod-precio">$2.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Cafiaspirina</h5><small>10 unidades</small><p class="prod-precio">$2.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Aspirina 100 mg" data-precio="700">
@@ -166,9 +172,9 @@
         <div class="prod-info"><h5>Aspirina 100 mg</h5><small>14 unidades</small><p class="prod-precio">$700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Amoxicilina" data-precio="1500">
+      <div class="prod-card" data-cat="blister" data-nombre="Amoxicilina" data-precio="1600">
         <div class="prod-img-wrap"><img src="./stilos/amoxicilina8.jpeg" alt="Amoxicilina"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Amoxicilina</h5><small>8 unidades</small><p class="prod-precio">$1.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Amoxicilina</h5><small>8 unidades</small><p class="prod-precio">$1.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Amoxicilina A. Clavunálico" data-precio="6000">
@@ -176,9 +182,9 @@
         <div class="prod-info"><h5>Amoxicilina A. Clavunálico</h5><small>14 unidades</small><p class="prod-precio">$6.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Cefalexina" data-precio="2200">
+      <div class="prod-card" data-cat="blister" data-nombre="Cefalexina" data-precio="2400">
         <div class="prod-img-wrap"><img src="./stilos/ButefinaCefa500mg.jpg" alt="Cefalexina"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Cefalexina</h5><small>10 unidades</small><p class="prod-precio">$2.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Cefalexina</h5><small>10 unidades</small><p class="prod-precio">$2.400</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Ciprofloxacina 500 (inf. urinaria)" data-precio="3600">
@@ -206,9 +212,9 @@
         <div class="prod-info"><h5>Pastilla efervescente Catarro y Flema Tukol</h5><small>600mg x10u</small><p class="prod-precio">$13.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Mylanta" data-precio="3300">
+      <div class="prod-card" data-cat="blister" data-nombre="Mylanta" data-precio="4100">
         <div class="prod-img-wrap"><img src="./stilos/Mylantapng.png" alt="Mylanta"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Mylanta</h5><small>8 unidades</small><p class="prod-precio">$3.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Mylanta</h5><small>8 unidades</small><p class="prod-precio">$4.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Diclofenac B12" data-precio="3500">
@@ -226,9 +232,9 @@
         <div class="prod-info"><h5>Diclofenac Potásico</h5><small>10 unidades</small><p class="prod-precio">$1.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Diclofenac Pridinol" data-precio="1000">
+      <div class="prod-card" data-cat="blister" data-nombre="Diclofenac Pridinol" data-precio="1100">
         <div class="prod-img-wrap"><img src="./stilos/dicloprid.jfif" alt="Diclofenac Pridinol"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Diclofenac Pridinol</h5><small>10 unidades</small><p class="prod-precio">$1.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Diclofenac Pridinol</h5><small>10 unidades</small><p class="prod-precio">$1.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Diclofenac 75 mg" data-precio="700">
@@ -241,34 +247,34 @@
         <div class="prod-info"><h5>Rennie</h5><small>6 unidades</small><p class="prod-precio">$2.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Buscapina Compuesta" data-precio="8900">
+      <div class="prod-card" data-cat="blister" data-nombre="Buscapina Compuesta" data-precio="10000">
         <div class="prod-img-wrap"><img src="./stilos/buscapinacomp.png" alt="Buscapina Compuesta"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Buscapina Compuesta</h5><small>10 unidades</small><p class="prod-precio">$8.900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Buscapina Compuesta</h5><small>10 unidades</small><p class="prod-precio">$10.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Buscapina Duo" data-precio="7700">
+      <div class="prod-card" data-cat="blister" data-nombre="Buscapina Duo" data-precio="8200">
         <div class="prod-img-wrap"><img src="./stilos/buscapinaduo.webp" alt="Buscapina Duo"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Buscapina Duo</h5><small>10 unidades</small><p class="prod-precio">$7.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Buscapina Duo</h5><small>10 unidades</small><p class="prod-precio">$8.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Buscapina Perlas" data-precio="5700">
+      <div class="prod-card" data-cat="blister" data-nombre="Buscapina Perlas" data-precio="6000">
         <div class="prod-img-wrap"><img src="./stilos/buscapinaperlas.webp" alt="Buscapina Perlas"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Buscapina Perlas</h5><small>10 unidades</small><p class="prod-precio">$5.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Buscapina Perlas</h5><small>10 unidades</small><p class="prod-precio">$6.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Sertal Compuesto" data-precio="7600">
+      <div class="prod-card" data-cat="blister" data-nombre="Sertal Compuesto" data-precio="8300">
         <div class="prod-img-wrap"><img src="./stilos/sertalcomp.jfif" alt="Sertal Compuesto"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Sertal Compuesto</h5><small>10 unidades</small><p class="prod-precio">$7.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Sertal Compuesto</h5><small>10 unidades</small><p class="prod-precio">$8.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Sertal Perlas" data-precio="5300">
+      <div class="prod-card" data-cat="blister" data-nombre="Sertal Perlas" data-precio="5800">
         <div class="prod-img-wrap"><img src="./stilos/sertalperlas.jfif" alt="Sertal Perlas"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Sertal Perlas</h5><small>10 unidades</small><p class="prod-precio">$5.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Sertal Perlas</h5><small>10 unidades</small><p class="prod-precio">$5.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Resaquit" data-precio="2200">
+      <div class="prod-card" data-cat="blister" data-nombre="Resaquit" data-precio="2300">
         <div class="prod-img-wrap"><img src="./stilos/resaquit.jfif" alt="Resaquit"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Resaquit</h5><small>4 unidades</small><p class="prod-precio">$2.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Resaquit</h5><small>4 unidades</small><p class="prod-precio">$2.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Refrianex" data-precio="4400">
@@ -276,19 +282,19 @@
         <div class="prod-info"><h5>Refrianex</h5><small>10 unidades</small><p class="prod-precio">$4.400</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Qura Plus" data-precio="4600">
+      <div class="prod-card" data-cat="blister" data-nombre="Qura Plus" data-precio="4900">
         <div class="prod-img-wrap"><img src="./stilos/quraplus.jfif" alt="Qura Plus"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Qura Plus</h5><small>10 unidades</small><p class="prod-precio">$4.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Qura Plus</h5><small>10 unidades</small><p class="prod-precio">$4.900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Next Gripe" data-precio="3700">
+      <div class="prod-card" data-cat="blister" data-nombre="Next Gripe" data-precio="3900">
         <div class="prod-img-wrap"><img src="./stilos/nextgripe.jfif" alt="Next Gripe"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Next Gripe</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$3.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Next Gripe</h5><small>10 unidades · cáps. blandas</small><p class="prod-precio">$3.900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Next Plus" data-precio="3400">
+      <div class="prod-card" data-cat="blister" data-nombre="Next Plus" data-precio="3500">
         <div class="prod-img-wrap"><img src="./stilos/nextplus.jfif" alt="Next Plus"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Next Plus</h5><small>10 unidades</small><p class="prod-precio">$3.400</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Next Plus</h5><small>10 unidades</small><p class="prod-precio">$3.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Loratadina" data-precio="800">
@@ -316,19 +322,19 @@
         <div class="prod-info"><h5>Losartan 50 mg</h5><small>10 unidades</small><p class="prod-precio">$1.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Mejoral para Niños" data-precio="2900">
+      <div class="prod-card" data-cat="blister" data-nombre="Mejoral para Niños" data-precio="3200">
         <div class="prod-img-wrap"><img src="./stilos/mejoralninos.jfif" alt="Mejoral para Niños"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Mejoral para Niños</h5><small>10 unidades</small><p class="prod-precio">$2.900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Mejoral para Niños</h5><small>10 unidades</small><p class="prod-precio">$3.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Novalgina" data-precio="7100">
+      <div class="prod-card" data-cat="blister" data-nombre="Novalgina" data-precio="7300">
         <div class="prod-img-wrap"><img src="./stilos/novalgina.jfif" alt="Novalgina"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Novalgina</h5><small>10 unidades</small><p class="prod-precio">$7.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Novalgina</h5><small>10 unidades</small><p class="prod-precio">$7.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Migral 500" data-precio="4700">
+      <div class="prod-card" data-cat="blister" data-nombre="Migral 500" data-precio="5000">
         <div class="prod-img-wrap"><img src="./stilos/migral500.jfif" alt="Migral 500"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Migral 500</h5><small>10 unidades</small><p class="prod-precio">$4.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Migral 500</h5><small>10 unidades</small><p class="prod-precio">$5.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Dorixina" data-precio="2500">
@@ -361,29 +367,29 @@
         <div class="prod-info"><h5>Tafirol Forte 650 mg</h5><small>10 unidades</small><p class="prod-precio">$2.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Tafirol 1gr" data-precio="2400">
+      <div class="prod-card" data-cat="blister" data-nombre="Tafirol 1gr" data-precio="2200">
         <div class="prod-img-wrap"><img src="./stilos/tafirol1.jfif" alt="Tafirol 1gr"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Tafirol 1gr</h5><small>8 unidades</small><p class="prod-precio">$2.400</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Tafirol 1gr</h5><small>8 unidades</small><p class="prod-precio">$2.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Tafirol Plus" data-precio="2500">
+      <div class="prod-card" data-cat="blister" data-nombre="Tafirol Plus" data-precio="2800">
         <div class="prod-img-wrap"><img src="./stilos/tafirolplus.jfif" alt="Tafirol Plus"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Tafirol Plus</h5><small>8 unidades</small><p class="prod-precio">$2.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Tafirol Plus</h5><small>8 unidades</small><p class="prod-precio">$2.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Tafirol Migra" data-precio="4800">
+      <div class="prod-card" data-cat="blister" data-nombre="Tafirol Migra" data-precio="5000">
         <div class="prod-img-wrap"><img src="./stilos/tafirolmigra.jfif" alt="Tafirol Migra"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Tafirol Migra</h5><small>10 unidades</small><p class="prod-precio">$4.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Tafirol Migra</h5><small>10 unidades</small><p class="prod-precio">$5.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Tafirol DUO" data-precio="3600">
+      <div class="prod-card" data-cat="blister" data-nombre="Tafirol DUO" data-precio="4000">
         <div class="prod-img-wrap"><img src="./stilos/tafirolduo.jfif" alt="Tafirol DUO"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Tafirol DUO</h5><small>10 unidades</small><p class="prod-precio">$3.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Tafirol DUO</h5><small>10 unidades</small><p class="prod-precio">$4.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="blister" data-nombre="Tafirolito" data-precio="5300">
+      <div class="prod-card" data-cat="blister" data-nombre="Tafirolito" data-precio="6100">
         <div class="prod-img-wrap"><img src="./stilos/tafirolito.jfif" alt="Tafirolito"/><span class="prod-badge">Blister</span></div>
-        <div class="prod-info"><h5>Tafirolito</h5><small>10 unidades</small><p class="prod-precio">$5.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Tafirolito</h5><small>10 unidades</small><p class="prod-precio">$6.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="blister" data-nombre="Caramelo antibiótico" data-precio="3200">
@@ -499,9 +505,9 @@
         <div class="prod-info"><h5>Crema Platsul 30gr</h5><p class="prod-precio">$6.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="crema" data-nombre="Adenil crema betametazona 20g" data-precio="5600">
-        <div class="prod-img-wrap"><img src="./stilos/adenil.jfif" alt="Adenil crema"/><span class="prod-badge badge-crema">Crema</span></div>
-        <div class="prod-info"><h5>Adenil crema (betametazona) 20g</h5><p class="prod-precio">$5.600</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+      <div class="prod-card" data-cat="crema" data-nombre="miklogen crema betametazona 20g" data-precio="6200">
+        <div class="prod-img-wrap"><img src="./stilos/miklocrema.jpg" alt="miklogen crema"/><span class="prod-badge badge-crema">Crema</span></div>
+        <div class="prod-info"><h5>Miklogen crema (betametazona) 20g</h5><p class="prod-precio">$6.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="crema" data-nombre="Crema rectal hemorroide" data-precio="7200">
@@ -529,9 +535,9 @@
     <h2 id="sobre" class="seccion-categoria" style="scroll-margin-top:90px;">📦 Sobres</h2>
      <div class="catalogo-grid">
 
-      <div class="prod-card" data-cat="sobre" data-nombre="Aspirina C Caliente" data-precio="1700">
-        <div class="prod-img-wrap"><img src="./stilos/aspirinaC.jfif" alt="Aspirina C Caliente"/><span class="prod-badge badge-sobre">Sobre</span></div>
-        <div class="prod-info"><h5>Aspirina C Caliente</h5><p class="prod-precio">$1.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+      <div class="prod-card" data-cat="sobre" data-nombre="Bayaspirina C Caliente" data-precio="1700">
+        <div class="prod-img-wrap"><img src="./stilos/bayaspirinaC.jfif" alt="Bayaspirina C Caliente"/><span class="prod-badge badge-sobre">Sobre</span></div>
+        <div class="prod-info"><h5>Bayaspirina C Caliente</h5><p class="prod-precio">$1.700</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="sobre" data-nombre="Bayaspirina C Fría" data-precio="1300">
@@ -541,12 +547,17 @@
 
       <div class="prod-card" data-cat="sobre" data-nombre="Te Vent 3" data-precio="1300">
         <div class="prod-img-wrap"><img src="./stilos/vent3.jfif" alt="Te Vent 3"/><span class="prod-badge badge-sobre">Sobre</span></div>
-        <div class="prod-info"><h5>Te Vent 3</h5><p class="prod-precio">$1.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Te Plus Vent 3</h5><p class="prod-precio">$1.300</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="sobre" data-nombre="Te Vick" data-precio="3000">
         <div class="prod-img-wrap"><img src="./stilos/tevick.jfif" alt="Te Vick"/><span class="prod-badge badge-sobre">Sobre</span></div>
         <div class="prod-info"><h5>Te Vick</h5><p class="prod-precio">$3.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="sobre" data-nombre="Te Vick Forte" data-precio="2800">
+        <div class="prod-img-wrap"><img src="./stilos/vickForte.png" alt="Te Vick Forte"/><span class="prod-badge badge-sobre">Sobre</span></div>
+        <div class="prod-info"><h5>Te Vick Forte</h5><p class="prod-precio">$2.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="sobre" data-nombre="Next T-Forte" data-precio="2200">
@@ -603,9 +614,9 @@
       <!-- ── TÍTULO OTROS -->
     <h2 id="otro" class="seccion-categoria" style="scroll-margin-top:90px;">➕ Otros</h2>
      <div class="catalogo-grid">
-      <div class="prod-card" data-cat="otro" data-nombre="Chicle Laxante" data-precio="4800">
+      <div class="prod-card" data-cat="otro" data-nombre="Chicle Laxante" data-precio="5200">
         <div class="prod-img-wrap"><img src="./stilos/laxante.jfif" alt="Chicle Laxante"/><span class="prod-badge badge-otro">Otro</span></div>
-        <div class="prod-info"><h5>Chicle Laxante</h5><small>6 unidades</small><p class="prod-precio">$4.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Chicle Laxante</h5><small>6 unidades</small><p class="prod-precio">$5.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="otro" data-nombre="Pastilla Azul" data-precio="1500">
@@ -633,14 +644,19 @@
         <div class="prod-info"><h5>Pastilla del día después</h5><small>1 unidad</small><p class="prod-precio">$2.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="otro" data-nombre="Anticonceptivas Norgestrel Plus" data-precio="6800">
+      <div class="prod-card" data-cat="otro" data-nombre="Anticonceptivas Norgestrel Plus" data-precio="7200">
         <div class="prod-img-wrap"><img src="./stilos/anit.jfif" alt="Anticonceptivas Norgestrel Plus"/><span class="prod-badge badge-otro">Otro</span></div>
-        <div class="prod-info"><h5>Anticonceptivas - Norgestrel Plus</h5><p class="prod-precio">$6.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Anticonceptivas - Norgestrel Plus</h5><p class="prod-precio">$7.200</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="otro" data-nombre="Preservativo M caja" data-precio="2800">
         <div class="prod-img-wrap"><img src="./stilos/preservativos.jfif" alt="Preservativo M caja"/><span class="prod-badge badge-otro">Otro</span></div>
         <div class="prod-info"><h5>Preservativo M caja</h5><small>3 unidades</small><p class="prod-precio">$2.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="otro" data-nombre="Óvulos" data-precio="16000">
+        <div class="prod-img-wrap"><img src="./stilos/ovulos.webp" alt="Óvulos"/><span class="prod-badge badge-otro">Otro</span></div>
+        <div class="prod-info"><h5>Óvulos</h5><small>6 unidades</small><p class="prod-precio">$16.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="otro" data-nombre="Frasco Análisis" data-precio="750">
@@ -683,9 +699,9 @@
         <div class="prod-info"><h5>Solución Fisiológica</h5><p class="prod-precio">$800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="otro" data-nombre="Iodopovidona pervinox 60ml" data-precio="3500">
+      <div class="prod-card" data-cat="otro" data-nombre="Iodopovidona pervinox 60ml" data-precio="3800">
         <div class="prod-img-wrap"><img src="./stilos/pervinox.jfif" alt="Iodopovidona pervinox"/><span class="prod-badge badge-otro">Otro</span></div>
-        <div class="prod-info"><h5>Iodopovidona (pervinox) 60ml</h5><p class="prod-precio">$3.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Iodopovidona (pervinox) 60ml</h5><p class="prod-precio">$3.800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="otro" data-nombre="Bicarbonato" data-precio="500">
@@ -693,9 +709,9 @@
         <div class="prod-info"><h5>Bicarbonato</h5><p class="prod-precio">$500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="otro" data-nombre="Azufre" data-precio="1100">
+      <div class="prod-card" data-cat="otro" data-nombre="Azufre" data-precio="1500">
         <div class="prod-img-wrap"><img src="./stilos/azufre.jfif" alt="Azufre"/><span class="prod-badge badge-otro">Otro</span></div>
-        <div class="prod-info"><h5>Azufre</h5><p class="prod-precio">$1.100</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Azufre</h5><p class="prod-precio">$1.500</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
       <div class="prod-card" data-cat="otro" data-nombre="Pañuelos Descartable" data-precio="1700">
@@ -733,9 +749,9 @@
         <div class="prod-info"><h5>Manteca de cacao</h5><p class="prod-precio">$1.000</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
 
-      <div class="prod-card" data-cat="otro" data-nombre="Cinta Hipoalergenica x1" data-precio="800">
+      <div class="prod-card" data-cat="otro" data-nombre="Cinta Hipoalergenica x1" data-precio="900">
         <div class="prod-img-wrap"><img src="./stilos/cinta.jfif" alt="Cinta Hipoalergenica"/><span class="prod-badge badge-otro">Otro</span></div>
-        <div class="prod-info"><h5>Cinta Hipoalergenica x1</h5><p class="prod-precio">$800</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
+        <div class="prod-info"><h5>Cinta Hipoalergenica x1</h5><p class="prod-precio">$900</p><div class="cantidad-control"><button class="btn-menos" onclick="cambiarCantidad(this,-1)">−</button><span>0</span><button class="btn-mas" onclick="cambiarCantidad(this,1)">+</button></div></div>
       </div>
     </div>
   <!-- /catalogo-grid (UNA SOLA) -->
@@ -822,6 +838,28 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+<!-- Tu botón al final del body -->
+  <button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+  <!-- El script SIEMPRE abajo del botón -->
   <script src="lizi.js"></script>
+
+  <!-- Botón Flotante de WhatsApp -->
+<a 
+  href="https://wa.me/5493364580967?text=Hola!%20Quisiera%20consultar%20por%20un%20medicamento" 
+  class="whatsapp-btn" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  aria-label="Consultar por WhatsApp"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+  </svg>
+</a>
 </body>
 </html>
