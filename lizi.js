@@ -211,7 +211,12 @@ function actualizarDropdown(texto) {
   const cards = document.querySelectorAll('.prod-card');
   let coincidencias = 0;
 
-  cards.forEach(card => {
+  cards.forEach((card, index) => {
+    // Si la tarjeta no tiene un ID, le asignamos uno automáticamente en el momento
+    if (!card.id) {
+      card.id = `prod-card-auto-${index}`;
+    }
+
     const catCard = (card.dataset.cat || '').toLowerCase().trim();
     const nombre = card.dataset.nombre || '';
     const matchCat = catActiva === 'todos' || catCard === catActiva;
@@ -228,22 +233,30 @@ function actualizarDropdown(texto) {
       // Creamos el ítem del desplegable
       const item = document.createElement('a');
       item.classList.add('result-item');
-      
-      // Si tus cards tienen un ID o enlace, podés asignarlo acá
-      item.href = card.id ? `#${card.id}` : '#';
+      item.href = 'javascript:void(0);'; // Evita saltos no deseados de la URL
 
       item.innerHTML = `
         <img src="${imgSrc}" alt="${nombre}" class="result-thumb" />
         <span class="result-title">${nombre}</span>
       `;
 
-      // Al hacer clic en un ítem del desplegable, hace scroll suave hasta la tarjeta
-      item.addEventListener('click', (e) => {
+      // Usamos mousedown para ganar tiempo y asegurar que el clic se ejecute
+      item.addEventListener('mousedown', (e) => {
+        e.preventDefault(); // Previene que se cierre la lista antes de hacer scroll
         searchResults.classList.add('hidden');
-        if (card.id) {
-          e.preventDefault();
-          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+
+        // Scroll directo y suave a la tarjeta centrada
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Efecto visual de destello para indicar la tarjeta encontrada
+        card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        card.style.transform = 'scale(1.05)';
+        card.style.boxShadow = '0 0 15px rgba(40, 167, 69, 0.6)';
+
+        setTimeout(() => {
+          card.style.transform = 'none';
+          card.style.boxShadow = 'none';
+        }, 1200);
       });
 
       searchResults.appendChild(item);
@@ -311,6 +324,7 @@ document.addEventListener('click', (e) => {
     searchResults.classList.add('hidden');
   }
 });
+
 
 // ================================================
 // 7. BOTÓN VOLVER ARRIBA (Back to Top)

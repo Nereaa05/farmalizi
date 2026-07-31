@@ -1114,6 +1114,7 @@ footer a:hover      { text-decoration: underline; }
   color: #ffffff !important;
 }
 
+
 /* Animación sutil de ondas expansivas */
 @keyframes pulse-wa {
   0% {
